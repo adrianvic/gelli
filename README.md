@@ -1,8 +1,14 @@
-## Gelli
+<img width="400" alt="CD disk with rainbow chroma on left followed by the strings 'Jamfish' on top and 'Delicious music client for Jellyfin' at the bottom." src="https://github.com/user-attachments/assets/993fae4a-f4e0-459d-b9ca-85ce548f1dea" />
 
-This is a native music player for Android devices that connects to Jellyfin media servers. The code is based on a relatively recent version of Phonograph and was made for personal use, but contributions are welcome! Please open an issue to discuss larger changes before submitting a pull request. I am open to an improved icon if any graphic designers have a good suggestion.
+# Introduction
 
-## Features
+This is a native music player for Android devices that connects to Jellyfin media servers. The code is based on Gelli's archived repository, which is based on an old version of Phonograph. Jamfish is made for personal use, but contributions are welcome! Please open an issue to discuss larger changes before submitting a pull request.
+
+# Screenshots
+
+<img width="4320" height="1560" alt="image(4)" src="https://github.com/user-attachments/assets/cba1fa13-9aae-44a6-94de-af5fdac8456f" />
+
+# Features
 
 * Basic library navigation
 * Download songs to internal storage individually or through batch actions
@@ -14,30 +20,23 @@ This is a native music player for Android devices that connects to Jellyfin medi
 * Playback history reporting
 * Filter content by library
 
-## Issues
+# Issues
 
 Since this was a small project intended mainly for myself, there are some things I haven't resolved yet. I would appreciate pull requests to fix any of these issues!
 
 * Artist sorting isn't available through the API
 * Playlists and favorites will not update automatically when changed
 
-## Future Plans
+# Future Plans
 
 If I ever find the time, these are some of the items I would potentially include.
 
 * Interface overhaul
-* Offline downloads
-* SyncPlay
+* Playing device songs
+* SyncPlay (Jellyfin built-in watchparty)
 * Smart playlists
 * Session controls
 * QuickConnect
-
-These are features I wouldn't include myself, but I would accept pull requests with good code.
-
-* Support for other media types
+* Support for videoclips
 * Chromecast
 * Android Auto
-
-## Screenshots
-
-<img src='https://raw.githubusercontent.com/dkanada/gelli/master/metadata/en-US/screenshots.png'>
