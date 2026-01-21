@@ -10,6 +10,9 @@ This is a native music player for Android devices that connects to Jellyfin medi
 
 # Features
 
+> [!TIP]
+> Song 'caching' is not available on Jamfish, only downloading to internal storage. If you want this feature, please use Gelli, the reason I forked it was to remove that function in favor of downloads. If this feature is ever added again it will work with downloaded songs for more flexibility. **Downloads will not be used when streaming.**
+
 * Basic library navigation
 * Download songs to internal storage individually or through batch actions
 * Gapless playback
