@@ -2,10 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 32
+    namespace 'org.adrianvictor.geleia'
+
+    compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion 19
+        minSdk 19
         targetSdk 33
 
         versionCode 18
@@ -60,6 +62,7 @@ android {
         includeInApk = false
         includeInBundle = false
     }
+    namespace 'org.adrianvictor.geleia'
 }
 
 dependencies {
@@ -105,7 +108,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
 
     annotationProcessor 'androidx.room:room-compiler:2.4.3'
     implementation 'androidx.room:room-runtime:2.4.3'
