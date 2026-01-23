@@ -180,7 +180,7 @@ public abstract class CustomFragmentStatePagerAdapter extends PagerAdapter {
     @Override
     public Parcelable saveState() {
         Bundle state = null;
-        if (mSavedState.size() > 0) {
+        if (!mSavedState.isEmpty()) {
             state = new Bundle();
             Fragment.SavedState[] fss = new Fragment.SavedState[mSavedState.size()];
             mSavedState.toArray(fss);

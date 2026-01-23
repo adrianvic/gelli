@@ -59,7 +59,7 @@ public abstract class AbsBaseActivity extends AbsThemeActivity {
                 .setPositiveButton(R.string.disable, (dialog, id) -> requestBatteryOptimization());
 
             new Handler().postDelayed(builder::show, 2000);
-        } else if (permissions.size() != 0 && ActivityCompat.shouldShowRequestPermissionRationale(this, permissions.get(0))) {
+        } else if (!permissions.isEmpty() && ActivityCompat.shouldShowRequestPermissionRationale(this, permissions.get(0))) {
             builder.setMessage(getPermissionMessage())
                 .setTitle(R.string.permissions_denied)
                 .setPositiveButton(R.string.action_grant, (dialog, id) -> requestPermissions());

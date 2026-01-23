@@ -273,7 +273,7 @@ public class MusicPlayerRemote {
 
     public static boolean playNext(Song song) {
         if (musicService != null && musicService.queueManager != null) {
-            if (getPlayingQueue().size() > 0) {
+            if (!getPlayingQueue().isEmpty()) {
                 musicService.queueManager.addSong(getPosition() + 1, song);
             } else {
                 List<Song> queue = new ArrayList<>();
@@ -290,7 +290,7 @@ public class MusicPlayerRemote {
 
     public static boolean playNext(@NonNull List<Song> songs) {
         if (musicService != null && musicService.queueManager != null) {
-            if (getPlayingQueue().size() > 0) {
+            if (!getPlayingQueue().isEmpty()) {
                 musicService.queueManager.addSongs(getPosition() + 1, songs);
             } else {
                 openQueue(songs, 0, false);
@@ -306,7 +306,7 @@ public class MusicPlayerRemote {
 
     public static boolean enqueue(Song song) {
         if (musicService != null && musicService.queueManager != null) {
-            if (getPlayingQueue().size() > 0) {
+            if (!getPlayingQueue().isEmpty()) {
                 musicService.queueManager.addSong(song);
             } else {
                 List<Song> queue = new ArrayList<>();
@@ -323,7 +323,7 @@ public class MusicPlayerRemote {
 
     public static boolean enqueue(@NonNull List<Song> songs) {
         if (musicService != null && musicService.queueManager != null) {
-            if (getPlayingQueue().size() > 0) {
+            if (!getPlayingQueue().isEmpty()) {
                 musicService.queueManager.addSongs(songs);
             } else {
                 openQueue(songs, 0, false);

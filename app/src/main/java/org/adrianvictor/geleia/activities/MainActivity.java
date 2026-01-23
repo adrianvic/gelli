@@ -1,9 +1,12 @@
 package org.adrianvictor.geleia.activities;
 
+import static org.adrianvictor.geleia.adapter.CustomFragmentStatePagerAdapter.TAG;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,10 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Lifecycle;
 
 import com.afollestad.materialcab.attached.AttachedCab;
 import com.afollestad.materialcab.attached.AttachedCabKt;
 import org.adrianvictor.geleia.activities.base.AbsMusicContentActivity;
+import org.adrianvictor.geleia.fragments.OfflineFragment;
 import org.adrianvictor.geleia.interfaces.CabHolder;
 import org.adrianvictor.geleia.util.PreferenceUtil;
 import org.adrianvictor.geleia.util.ThemeUtil;
@@ -42,6 +47,7 @@ public class MainActivity extends AbsMusicContentActivity implements CabHolder {
     private ActivityMainContentBinding contentBinding;
     private NavigationDrawerHeaderBinding navigationBinding;
     private boolean onLogout;
+    private boolean pendingShowOffline = false;
 
     @Nullable
     private AttachedCab cab;
@@ -98,6 +104,24 @@ public class MainActivity extends AbsMusicContentActivity implements CabHolder {
     }
 
     @Override
+    public void onStateOffline() {
+        Log.d(TAG, "onStateOffline() foi chamado.");
+        Menu menu = binding.navigationView.getMenu();
+        menu.clear();
+
+        menu.add(R.id.navigation_drawer_menu_category_other, R.id.nav_settings, menu.size(), R.string.action_settings);
+        menu.getItem(menu.size() - 1).setIcon(R.drawable.ic_settings_white_24dp);
+        menu.add(R.id.navigation_drawer_menu_category_other, R.id.nav_about, menu.size(), R.string.action_about);
+        menu.getItem(menu.size() - 1).setIcon(R.drawable.ic_info_outline_white_24dp);
+        menu.add(R.id.navigation_drawer_menu_category_other, R.id.nav_logout, menu.size(), R.string.logout);
+        menu.getItem(menu.size() - 1).setIcon(R.drawable.ic_exit_to_app_white_48dp);
+
+        setUpDrawerLayout();
+
+        pendingShowOffline = true;
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
 
@@ -105,6 +129,16 @@ public class MainActivity extends AbsMusicContentActivity implements CabHolder {
         if (onLogout) {
             overridePendingTransition(0, R.anim.fade_quick);
             onLogout = false;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (pendingShowOffline) {
+            setCurrentFragment(OfflineFragment.newInstance());
+            pendingShowOffline = false;
         }
     }
 

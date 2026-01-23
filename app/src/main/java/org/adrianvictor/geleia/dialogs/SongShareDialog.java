@@ -31,7 +31,7 @@ public class SongShareDialog extends DialogFragment {
         final String currentlyListening = getString(R.string.currently_listening_to_x_by_x, song.title, song.artistName);
         return new MaterialDialog.Builder(requireActivity())
                 .title(R.string.what_do_you_want_to_share)
-                .items(getString(R.string.the_audio_file), "\u201C" + currentlyListening + "\u201D")
+                .items(getString(R.string.the_audio_file), "“" + currentlyListening + "”")
                 .itemsCallback((materialDialog, view, i, charSequence) -> {
                     switch (i) {
                         case 0:

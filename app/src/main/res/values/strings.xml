@@ -236,5 +236,10 @@
     <string name="dkanada_summary">Forking Phonograph and making Gelli</string>
     <string name="adrianvictor">Adrian Victor</string>
     <string name="error_notification_title">An error occurred in Jamfish.</string>
+    <string name="offline">You are offline.</string>
+    <string name="change_server">Change server</string>
+    <string name="oops">Oops! I did it again...</string>
+    <string name="sad_face">;(</string>
+    <string name="server_is_unreachable">Sorry, but we couldn\'t reach this server right now.</string>
 
 </resources>

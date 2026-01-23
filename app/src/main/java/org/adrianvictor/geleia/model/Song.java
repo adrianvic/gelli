@@ -67,10 +67,10 @@ public class Song implements Parcelable {
         this.albumId = itemDto.getAlbumId();
         this.albumName = itemDto.getAlbum();
 
-        if (itemDto.getArtistItems().size() != 0) {
+        if (!itemDto.getArtistItems().isEmpty()) {
             this.artistId = itemDto.getArtistItems().get(0).getId();
             this.artistName = itemDto.getArtistItems().get(0).getName();
-        } else if (itemDto.getAlbumArtists().size() != 0) {
+        } else if (!itemDto.getAlbumArtists().isEmpty()) {
             this.artistId = itemDto.getAlbumArtists().get(0).getId();
             this.artistName = itemDto.getAlbumArtists().get(0).getName();
         }
@@ -93,7 +93,7 @@ public class Song implements Parcelable {
 
             this.supportsTranscoding = source.getSupportsTranscoding();
 
-            if (source.getMediaStreams() != null && source.getMediaStreams().size() != 0) {
+            if (source.getMediaStreams() != null && !source.getMediaStreams().isEmpty()) {
                 MediaStream stream = source.getMediaStreams().get(0);
 
                 this.codec = stream.getCodec();

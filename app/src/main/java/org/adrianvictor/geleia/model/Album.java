@@ -29,10 +29,10 @@ public class Album implements Parcelable {
         this.title = itemDto.getName();
         this.year = itemDto.getProductionYear() != null ? itemDto.getProductionYear() : 0;
 
-        if (itemDto.getAlbumArtists().size() != 0) {
+        if (!itemDto.getAlbumArtists().isEmpty()) {
             this.artistId = itemDto.getAlbumArtists().get(0).getId();
             this.artistName = itemDto.getAlbumArtists().get(0).getName();
-        } else if (itemDto.getArtistItems().size() != 0) {
+        } else if (!itemDto.getArtistItems().isEmpty()) {
             this.artistId = itemDto.getArtistItems().get(0).getId();
             this.artistName = itemDto.getArtistItems().get(0).getName();
         }

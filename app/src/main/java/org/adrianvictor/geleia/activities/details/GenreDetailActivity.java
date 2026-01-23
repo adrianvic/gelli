@@ -60,6 +60,11 @@ public class GenreDetailActivity extends AbsMusicContentActivity implements CabH
     }
 
     @Override
+    public void onStateOffline() {
+
+    }
+
+    @Override
     protected View createContentView() {
         binding = ActivityGenreDetailBinding.inflate(getLayoutInflater());
 

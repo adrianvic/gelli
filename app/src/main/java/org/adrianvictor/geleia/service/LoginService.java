@@ -46,6 +46,21 @@ public class LoginService extends Service {
 
         if (user == null) {
             Toast.makeText(this, context.getResources().getString(R.string.error_unexpected), Toast.LENGTH_SHORT).show();
+            sendBroadcast(new Intent(STATE_OFFLINE));
+            return;
+        }
+
+        if (App.getApiClient() == null) {
+            try {
+                App.createApiClient(context);
+            } catch (Exception e) {
+                sendBroadcast(new Intent(STATE_OFFLINE));
+                return;
+            }
+        }
+
+        if (App.getApiClient() == null) {
+            sendBroadcast(new Intent(STATE_OFFLINE));
             return;
         }
 

@@ -1,14 +1,19 @@
 package org.adrianvictor.geleia.activities.base;
 
+import static org.adrianvictor.geleia.adapter.CustomFragmentStatePagerAdapter.TAG;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import org.adrianvictor.geleia.App;
+import org.adrianvictor.geleia.fragments.OfflineFragment;
 import org.adrianvictor.geleia.interfaces.StateListener;
 import org.adrianvictor.geleia.service.LoginService;
 import org.adrianvictor.geleia.util.NavigationUtil;
@@ -24,7 +29,7 @@ public abstract class AbsMusicContentActivity extends AbsMusicPanelActivity impl
                     onStateOnline();
                     break;
                 case LoginService.STATE_OFFLINE:
-                    NavigationUtil.startLogin(context);
+                    NavigationUtil.startSelect(context);
                     break;
             }
         }
@@ -39,7 +44,11 @@ public abstract class AbsMusicContentActivity extends AbsMusicPanelActivity impl
         filter.addAction(LoginService.STATE_ONLINE);
         filter.addAction(LoginService.STATE_OFFLINE);
 
-        registerReceiver(receiver, filter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            registerReceiver(receiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(receiver, filter);
+        }
 
         if (App.getApiClient() == null) {
             startService(new Intent(this, LoginService.class));
@@ -51,24 +60,14 @@ public abstract class AbsMusicContentActivity extends AbsMusicPanelActivity impl
     @Override
     protected void onResume() {
         super.onResume();
-
-        if (App.getApiClient() == null) {
-            startService(new Intent(this, LoginService.class));
-        }
     }
 
     @Override
     protected void onDestroy() {
         unregisterReceiver(receiver);
-
         super.onDestroy();
     }
 
     @Override
-    public void onStatePolling() {
-    }
-
-    @Override
-    public void onStateOffline() {
-    }
+    public void onStatePolling() {}
 }

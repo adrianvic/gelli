@@ -88,6 +88,11 @@ public class ArtistDetailActivity extends AbsMusicContentActivity implements Pal
     }
 
     @Override
+    public void onStateOffline() {
+
+    }
+
+    @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
         float headerAlpha = Math.max(0, Math.min(1, 1 + (2 * (float) verticalOffset / headerViewHeight)));
         binding.header.setAlpha(headerAlpha);
@@ -258,7 +263,7 @@ public class ArtistDetailActivity extends AbsMusicContentActivity implements Pal
         binding.albumCountText.setText(MusicUtil.getAlbumCountString(this, artist.albums.size()));
         binding.durationText.setText(MusicUtil.getReadableDurationString(MusicUtil.getTotalDuration(this, artist.songs)));
 
-        if (artist.songs.size() != 0) songAdapter.swapDataSet(artist.songs);
-        if (artist.albums.size() != 0) albumAdapter.swapDataSet(artist.albums);
+        if (!artist.songs.isEmpty()) songAdapter.swapDataSet(artist.songs);
+        if (!artist.albums.isEmpty()) albumAdapter.swapDataSet(artist.albums);
     }
 }
