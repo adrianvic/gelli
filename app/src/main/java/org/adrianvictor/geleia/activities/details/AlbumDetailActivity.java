@@ -75,6 +75,11 @@ public class AlbumDetailActivity extends AbsMusicContentActivity implements Pale
     }
 
     @Override
+    public void onStateOffline() {
+
+    }
+
+    @Override
     public void onOffsetChanged (AppBarLayout appBarLayout, int verticalOffset) {
         float headerAlpha = Math.max(0, Math.min(1, 1 + (2 * (float) verticalOffset / headerViewHeight)));
         binding.header.setAlpha(headerAlpha);
@@ -231,6 +236,6 @@ public class AlbumDetailActivity extends AbsMusicContentActivity implements Pale
         binding.durationText.setText(MusicUtil.getReadableDurationString(MusicUtil.getTotalDuration(this, album.songs)));
         binding.albumYearText.setText(MusicUtil.getYearString(album.year));
 
-        if (album.songs.size() != 0) adapter.swapDataSet(album.songs);
+        if (!album.songs.isEmpty()) adapter.swapDataSet(album.songs);
     }
 }

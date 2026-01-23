@@ -83,7 +83,7 @@ public class DownloadNotification {
             songs.clear();
         }
 
-        if (songs.size() != 0) {
+        if (!songs.isEmpty()) {
             return;
         }
 

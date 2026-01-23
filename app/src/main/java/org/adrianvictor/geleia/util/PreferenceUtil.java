@@ -448,7 +448,6 @@ public final class PreferenceUtil {
         }).collect(Collectors.toList());
     }
 
-    @SuppressWarnings("SimplifyStreamApiCallChains")
     public void setCategories(List<Category> categories) {
         List<String> values = categories.stream().map(category -> {
             return category.select ? category.toString() : category.toString().toLowerCase();

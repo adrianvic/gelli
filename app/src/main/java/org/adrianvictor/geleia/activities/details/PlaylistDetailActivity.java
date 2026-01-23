@@ -72,6 +72,11 @@ public class PlaylistDetailActivity extends AbsMusicContentActivity implements C
     }
 
     @Override
+    public void onStateOffline() {
+
+    }
+
+    @Override
     protected View createContentView() {
         binding = ActivityPlaylistDetailBinding.inflate(getLayoutInflater());
 

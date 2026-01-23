@@ -40,7 +40,7 @@ public class App extends Application {
         database = createDatabase(this);
         apiClient = createApiClient(this);
 
-        if (database.userDao().getUsers().size() == 0) {
+        if (database.userDao().getUsers().isEmpty()) {
             PreferenceUtil.getInstance(this).setServer(null);
             PreferenceUtil.getInstance(this).setUser(null);
         }
@@ -75,6 +75,7 @@ public class App extends Application {
         IAsyncHttpClient httpClient = new VolleyHttpClient(logger, context);
         IDevice device = new AndroidDevice(deviceId, deviceName);
         EventListener eventListener = new EventListener();
+
 
         return new ApiClient(httpClient, logger, server, appName, appVersion, device, eventListener);
     }

@@ -12,6 +12,7 @@ import androidx.core.util.Pair;
 import org.adrianvictor.geleia.activities.LoginActivity;
 import org.adrianvictor.geleia.activities.MainActivity;
 import org.adrianvictor.geleia.activities.SelectActivity;
+import org.adrianvictor.geleia.activities.UnreachableActivity;
 import org.adrianvictor.geleia.model.Album;
 import org.adrianvictor.geleia.model.Artist;
 import org.adrianvictor.geleia.model.Genre;
@@ -56,6 +57,13 @@ public class NavigationUtil {
 
     public static void startLogin(Context context) {
         final Intent intent = new Intent(context, LoginActivity.class);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        context.startActivity(intent);
+    }
+
+    public static void startUnreachable(Context context) {
+        final Intent intent = new Intent(context, UnreachableActivity.class);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         context.startActivity(intent);

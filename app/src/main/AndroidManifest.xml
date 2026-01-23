@@ -66,7 +66,7 @@
             android:name="org.adrianvictor.geleia.views.shortcuts.AppShortcutLauncherActivity"
             android:launchMode="singleInstance"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
+        <activity android:name="org.adrianvictor.geleia.activities.UnreachableActivity" />
         <service android:name="org.adrianvictor.geleia.service.DownloadService" />
         <service android:name="org.adrianvictor.geleia.service.LoginService" />
         <service android:name="org.adrianvictor.geleia.service.MusicService" />

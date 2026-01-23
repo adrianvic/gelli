@@ -36,7 +36,7 @@ public class DynamicShortcutManager {
     }
 
     public void initDynamicShortcuts() {
-        if (shortcutManager.getDynamicShortcuts().size() == 0) {
+        if (shortcutManager.getDynamicShortcuts().isEmpty()) {
             shortcutManager.setDynamicShortcuts(getDefaultShortcuts());
         }
     }

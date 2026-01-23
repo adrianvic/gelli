@@ -93,6 +93,9 @@ public class SearchActivity extends AbsMusicContentActivity implements SearchVie
     public void onStateOnline() {
     }
 
+    @Override
+    public void onStateOffline() {}
+
     private void setUpToolBar() {
         binding.toolbar.setBackgroundColor(PreferenceUtil.getInstance(this).getPrimaryColor());
         setSupportActionBar(binding.toolbar);

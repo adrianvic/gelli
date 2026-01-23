@@ -48,7 +48,7 @@ public class PlaylistUtil {
         PlaylistCreationRequest request = new PlaylistCreationRequest();
         request.setUserId(App.getApiClient().getCurrentUserId());
         request.setName(name);
-        if (ids.size() != 0) request.setItemIdList(ids);
+        if (!ids.isEmpty()) request.setItemIdList(ids);
         App.getApiClient().CreatePlaylist(request, new Response<>());
     }
 
