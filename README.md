@@ -23,12 +23,17 @@ This is a native music player for Android devices that connects to Jellyfin medi
 * Playback history reporting
 * Filter content by library
 
+# Requisites
+- A Jellfin server. See how to setup one [here](https://jellyfin.org/docs/general/quick-start/).
+- Android 4.4 or later
+
 # Issues
 
 Since this was a small project intended mainly for myself, there are some things I haven't resolved yet. I would appreciate pull requests to fix any of these issues!
 
 * Artist sorting isn't available through the API
-* Playlists and favorites will not update automatically when changed
+* Playlists and favorites will not update automatically when changed ([#5](https://github.com/adrianvic/jamfish/issues/5))
+* App may crash on really low end devices due exceeding the maximum bitmap memory ([#4](https://github.com/adrianvic/jamfish/issues/4))
 
 # Future Plans
 
