@@ -36,6 +36,8 @@ public class DownloadService extends Service {
     private ExecutorService executor;
     private DownloadNotification notification;
 
+    private static final Object lock = new Object();
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -88,13 +90,18 @@ public class DownloadService extends Service {
                     root = DocumentFile.fromFile(new File(location));
                 }
 
-                DocumentFile artist = root.findFile(MusicUtil.ascii(song.artistName));
-                if (artist == null) {
-                    artist = root.createDirectory(MusicUtil.ascii(song.artistName));
-                }
-                DocumentFile album = artist.findFile(MusicUtil.ascii(song.albumName));
-                if (album == null) {
-                    album = artist.createDirectory(MusicUtil.ascii(song.albumName));
+                DocumentFile artist;
+                DocumentFile album;
+
+                synchronized (lock) {
+                    artist = root.findFile(MusicUtil.ascii(song.artistName));
+                    if (artist == null) {
+                        artist = root.createDirectory(MusicUtil.ascii(song.artistName));
+                    }
+                    album = artist.findFile(MusicUtil.ascii(song.albumName));
+                    if (album == null) {
+                        album = artist.createDirectory(MusicUtil.ascii(song.albumName));
+                    }
                 }
 
                 String fileName = song.discNumber + "." + song.trackNumber + " - " + MusicUtil.ascii(song.title) + "." + song.container;
