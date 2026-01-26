@@ -103,18 +103,6 @@ public class MainActivity extends AbsMusicContentActivity implements CabHolder {
 
     @Override
     public void onStateOffline() {
-        Menu menu = binding.navigationView.getMenu();
-        menu.clear();
-
-        menu.add(R.id.navigation_drawer_menu_category_other, R.id.nav_settings, menu.size(), R.string.action_settings);
-        menu.getItem(menu.size() - 1).setIcon(R.drawable.ic_settings_white_24dp);
-        menu.add(R.id.navigation_drawer_menu_category_other, R.id.nav_about, menu.size(), R.string.action_about);
-        menu.getItem(menu.size() - 1).setIcon(R.drawable.ic_info_outline_white_24dp);
-        menu.add(R.id.navigation_drawer_menu_category_other, R.id.nav_logout, menu.size(), R.string.logout);
-        menu.getItem(menu.size() - 1).setIcon(R.drawable.ic_exit_to_app_white_48dp);
-
-        setUpDrawerLayout();
-
         if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
             NavigationUtil.startUnreachable(this);
         } else {
